@@ -1,0 +1,51 @@
+//declare burger bun var
+let burgerBun1
+
+//create burger bun class so that can 'bake' randomly sized burger buns with sesame seeds
+class burgerBun {
+  
+  //constructor for arc bun, which hopefully will be variable later on using random 
+    constructor(_x, _y, _w, _h, _start, _stop, _mode) {
+      this.x = _x
+      this.y = _y
+      this.w = _w
+      this.h = _h
+      this.start = _start
+      this.stop = _stop
+      this.mode = _mode
+    }
+  //display function to draw the bun and sesame seeds
+    display() {
+      
+      //fill and arc for bun
+      fill(176, 129, 63)
+      arc(this.x, this.y, this.w, this.h, 
+          this.start, this.stop, this.mode)
+      
+      //fill and ellipse for sesame seeds, maybe make random instead so the quant and size changes each time?
+      fill(255)
+      ellipse(210, 80, 5, 7)
+      ellipse(180, 59, 5, 7)
+      ellipse(230, 75, 5, 7)
+      ellipse(160, 95, 5, 7)
+      ellipse(150, 77, 5, 7)
+      ellipse(180, 76, 5, 7)
+      ellipse(255, 87, 5, 7)
+      ellipse(216, 57, 5, 7)
+      
+  }
+}
+
+//setup function with canvas and my randomized burger bun, and for some reason burgerbun1 is only working when I declare it here, maybe I'm doing something wrong above?
+function setup() {
+  createCanvas(600, 600);
+  burgerBun1 = new burgerBun (200, 150, 
+      random(200, 260),random(200, 225), PI, 2*PI, CHORD)
+}
+
+//draw function with background and calling the display burgerbun1 
+function draw() {
+  background(255, 255, 180);
+  
+  burgerBun1.display()
+}
