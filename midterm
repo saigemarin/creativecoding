@@ -17,10 +17,13 @@ class burgerBun {
   //display function to draw the bun and sesame seeds
     display() {
       
-      //fill and arc for bun
+      //fill and arc for top bun
       fill(176, 129, 63)
       arc(this.x, this.y, this.w, this.h, 
           this.start, this.stop, this.mode)
+     
+      //rounded rect for bottom bun, need to find a way to make random w align between both buns, maybe defining a new var and using in both places?
+      rect(90, 450, 220, 50, 10, 10, 40, 40)
       
       //fill and ellipse for sesame seeds, maybe make random instead so the quant and size changes each time?
       fill(255)
@@ -32,6 +35,8 @@ class burgerBun {
       ellipse(180, 76, 5, 7)
       ellipse(255, 87, 5, 7)
       ellipse(216, 57, 5, 7)
+      
+      
       
   }
 }
