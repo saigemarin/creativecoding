@@ -1,7 +1,7 @@
 /***************************************************************************
   Using Adafruit BMP280 library, 
-  Incorporating pieces of code from Adafruit BMP280 Library example 'bmp280test' written by Written by 
-  Limor Fried & Kevin Townsend for Adafruit Industries.
+  Incorporating pieces of code from Adafruit BMP280 Library example 'bmp280test' written by Limor Fried 
+  & Kevin Townsend for Adafruit Industries.
 
   Using Servo library, 
   Incorporating pieces of code from Servo library example 'Sweep' by BARRAGAN <http://barraganstudio.com> and 
@@ -21,15 +21,10 @@
 
 Adafruit_BMP280 bmp; // I2C
 
-Servo myservo;  // create servo object to control a servo
-// twelve servo objects can be created on most boards
-
-int pos = 0;    // variable to store the servo position
+Servo myservo;  // create servo object to control servo
 
 int servoVal;
 int tempVal;
-
-
 
 void setup() {
   Serial.begin(9600);
@@ -63,7 +58,7 @@ void loop() {
     tempVal = (bmp.readTemperature() * 9/5 + 32); //converts C temp to F temp
     Serial.print(F("Temperature = "));
     Serial.print(tempVal);
-    Serial.println(" *C");
+    Serial.println(" *F");
 
     Serial.print(F("Pressure = "));
     Serial.print(bmp.readPressure());
@@ -77,7 +72,8 @@ void loop() {
     delay(2000);
 
     servoVal = bmp.readPressure();            // bmp280 reading of barometric pressure
-    servoVal = map(servoVal, 99051, 104131, 0, 180);     // scale pressure range to use it with the 180 degree servo
-    myservo.write(65);                  // moves servo according to barometric pressure
+    servoVal = map(servoVal, 99051, 104131, 0, 160);     // scale pressure range to use it with the 180 degree servo, went down to 160 since the motor I used
+  // didn't appear to be going the full 180
+    myservo.write(servoVal);                  // moves servo according to barometric pressure
     delay(15);  
 }
